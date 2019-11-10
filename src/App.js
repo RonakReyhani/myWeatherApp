@@ -3,11 +3,21 @@ import FrontSide from "./FrontSide";
 import "./panel.css";
 
 class App extends Component {
+  state = {
+    flipped : false
+  }
+  onFlip = () => {
+    this.setState({flipped : !this.state.flipped});
+
+  }
+
+
+
   render() {
     return (
-      <div className="panel">
+      <div className={`panel ${this.state.flipped ? "flipped": "" }` }>
         <div className="panel-front">
-          <FrontSide />
+          <FrontSide onClick={this.onFlip}/>
         </div>
         <div className="panel-back">Panel Back</div>
       </div>
